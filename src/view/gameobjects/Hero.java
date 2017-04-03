@@ -5,16 +5,14 @@ import controller.Main;
 import controller.SoundController;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.GameData;
+import view.swingcomponents.MainWindow;
+import view.swingcomponents.DeathScreen;
 
 /**
 * Render a hero object to the screen.
@@ -35,6 +33,7 @@ public class Hero extends Actor {
     static boolean movingUp = false;
     static boolean movingDown = false;
     static boolean facingRight;
+    private boolean dead = false;
     
     
     private AnimationController animationController;
@@ -60,10 +59,10 @@ public class Hero extends Actor {
     * {@inheritDoc}
     */
     @Override
-    public void update(){
-      super.update();
-      healthBound();     
-      
+    public void update()
+    {
+        super.update();
+        if(!this.dead)healthBound();    
     }
     
     // Tyrel wrote this method
@@ -216,24 +215,30 @@ public class Hero extends Actor {
 
             
             
-        
-        float tempHealth = displayHealth;
-        if(tempHealth > 100) tempHealth =100;
+        if(!GameData.getInstance().gameObjects.get(0).boundingBox.contains(this.boundingBox))
+        {
+            //playerDied();
+        }
+        else
+        {
+            float tempHealth = displayHealth;
+            if(tempHealth > 100) tempHealth =100;
 
-        g2.setColor(Color.darkGray);
-        g2.fillRect(2,5,(int)(100 * 2.5), 15);
-        g2.setColor(new Color(10,50,(int)blueValue));
-        g2.fillRect(2, 5, (int) (tempHealth * 2.5), 15);
-        g2.setColor(Color.white);
-        g2.drawRect(2,5,(int)(100 *2.5), 15);
-        
-        for(int i=0; i<healthPacks-1; i++){
-         //g2.setColor(Color.red);
-         g2.setColor(new Color(10,50,(int)blueValue)); //the rectangles below the health bar have same color as health bar
-         g2.fillRect(1, 22, 10, 15);
-         if(healthPacks > 1 && i>0){
-             g2.fillRect((2*i)*7, 22, 10, 15);
-         }
+            g2.setColor(Color.darkGray);
+            g2.fillRect(2,5,(int)(100 * 2.5), 15);
+            g2.setColor(new Color(10,50,(int)blueValue));
+            g2.fillRect(2, 5, (int) (tempHealth * 2.5), 15);
+            g2.setColor(Color.white);
+            g2.drawRect(2,5,(int)(100 *2.5), 15);
+
+            for(int i=0; i<healthPacks-1; i++){
+             //g2.setColor(Color.red);
+             g2.setColor(new Color(10,50,(int)blueValue)); //the rectangles below the health bar have same color as health bar
+             g2.fillRect(1, 22, 10, 15);
+             if(healthPacks > 1 && i>0){
+                 g2.fillRect((2*i)*7, 22, 10, 15);
+             }
+            }
         }
     }
 
@@ -245,6 +250,13 @@ public class Hero extends Actor {
         if(displayHealth <=0 && health>0){
             health -= 100;
             displayHealth = health;
+        }
+        // Testing for video
+        health -= 1;
+        if(health <= 0)
+        {
+            // He dead Jim
+            playerDied();
         }
         blueValue = displayHealth*5;
         if(health <=0){
@@ -266,5 +278,20 @@ public class Hero extends Actor {
     public void setShield(float powerUp){
         this.displayHealth += powerUp;
         this.health += powerUp;
+    }
+    
+    private void playerDied()
+    {
+        this.dead = !this.dead;
+        DeathScreen dialogMenu = new DeathScreen(MainWindow.getInstance(), false);
+        int parentX = MainWindow.getInstance().getX();
+        int parentY = MainWindow.getInstance().getY();
+        int parentWidth = MainWindow.getInstance().getWidth();
+        int parentHeight = MainWindow.getInstance().getHeight();
+        dialogMenu.setLocation(parentX + parentWidth/2 - dialogMenu.getWidth()/2, parentY + parentHeight/2 - dialogMenu.getHeight()/2);
+        dialogMenu.getContentPane().setBackground(Color.BLACK);
+        dialogMenu.setResizable(true);
+        dialogMenu.setAlwaysOnTop(true);
+        dialogMenu.setVisible(true);
     }
 }
