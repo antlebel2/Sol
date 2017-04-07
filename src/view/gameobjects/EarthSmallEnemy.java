@@ -114,23 +114,7 @@ public class EarthSmallEnemy extends RenderableObject
             }
         }
         super.collide();
-        /*if(GameData.getInstance().getHero().getBoundingBox().intersects(boundingBox))
-        {
-            System.out.println("Killed Enemy! By walking into it.");
-            
-            this.clear();
-            GameData.getInstance().gameObjects.remove(this);
-            GameData.getInstance().getHero().setShield(-10);
-        }*/
-        for(int i = 0; i < GameData.getInstance().gameObjects.size(); i++)
-        if(GameData.getInstance().gameObjects.get(i) instanceof PrimaryWeapon || GameData.getInstance().gameObjects.get(i) instanceof Weapon &&
-                GameData.getInstance().gameObjects.get(i).boundingBox.intersects(boundingBox))
-        {
-            System.out.println("Killed Enemy! By missle.");
-            
-            this.clear();
-            GameData.getInstance().gameObjects.remove(this);
-        }
+        
     }
     
     @Override
