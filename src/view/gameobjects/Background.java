@@ -1,5 +1,6 @@
 package view.gameobjects;
 
+import controller.GameController;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;

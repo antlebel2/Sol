@@ -29,6 +29,7 @@ import view.worldmap.Moon;
 import view.worldmap.Sun;
 import view.gameobjects.Text;
 import view.gameobjects.Tile;
+import view.gameobjects.VenusLargeEnemy;
 import view.swingcomponents.MainWindow;
 import view.worldmap.Venus;
 
@@ -575,7 +576,6 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
     private void loadImageLevel(BufferedImage image){
         int w = image.getWidth();
         int h = image.getHeight();
-        
         //loop over every pixal from left to right, top to bottom
         for(int x =0; x< w; x++){
             for(int y=0; y<h; y++){
@@ -617,7 +617,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform
                 //Rose color pixal
-                if(red == 255 && green == 128 && blue == 128){
+                else if(red == 255 && green == 128 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(7, 8); //green platform center
@@ -627,7 +627,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
 
                 //platform left end
                 //Rose color pixal
-                if(red == 254 && green == 128 && blue == 128){
+                else if(red == 254 && green == 128 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     
@@ -638,7 +638,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform right end
                 //Rose color pixal
-                if(red == 253 && green == 128 && blue == 128){
+                else if(red == 253 && green == 128 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(8, 7); //green platform right
@@ -648,7 +648,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform middle lvl-2
                 //light green color pixal
-                if(red == 128 && green == 255 && blue == 128){
+                else if(red == 128 && green == 255 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(11, 2); //green platform right
@@ -658,7 +658,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform left end lvl-2
                 //light green color pixal
-                if(red == 128 && green == 254 && blue == 128){
+                else if(red == 128 && green == 254 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(11, 3); //green platform right
@@ -668,7 +668,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform right end lvl-2
                 //light green color pixal
-                if(red == 128 && green == 253 && blue == 128){
+                else if(red == 128 && green == 253 && blue == 128){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(11, 1); //green platform right
@@ -678,7 +678,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform middle lvl-3
                 //light purple color pixal
-                if(red == 128 && green == 128 && blue == 255){
+                else if(red == 128 && green == 128 && blue == 255){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(4, 8); //green platform right
@@ -688,7 +688,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform left end lvl-3
                 //light purple color pixal
-                if(red == 128 && green == 128 && blue == 254){
+                else if(red == 128 && green == 128 && blue == 254){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(5, 9); //green platform right
@@ -698,7 +698,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 //platform right end lvl-3
                 //light purple color pixal
-                if(red == 128 && green == 128 && blue == 253){
+                else if(red == 128 && green == 128 && blue == 253){
                     Tile tile = new Tile(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
                     tile.setSprite(5, 7); //green platform right
@@ -706,9 +706,66 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                     tile.setSolid(true);
                 }
                 
+                //platform middle lvl-4
+                //light gray color pixal
+                else if(red == 100 && green == 100 && blue == 100){
+                    Tile tile = new Tile(tileLoc); //Create tile object
+                    GameData.getInstance().addGameObject(tile); //Add tile to game object array
+                    tile.setSprite(1, 6); //green platform right
+                    tile.setTrim(1); //over size the tile to hide the gap
+                    tile.setSolid(true);
+                }
+                
+                //platform platform in mid-ari(just for a bit of variety) lvl-4
+                //light gray-blue color pixal
+                else if(red == 100 && green == 100 && blue == 150){
+                    Tile tile = new Tile(tileLoc); //Create tile object
+                    GameData.getInstance().addGameObject(tile); //Add tile to game object array
+                    tile.setSprite(1, 7); //green platform right
+                    tile.setTrim(1); //over size the tile to hide the gap
+                    tile.setSolid(true);
+                }
+                
+                //platform platform in mid collunm(just for a bit of variety) lvl-4
+                //light gray-blue color pixal
+                else if(red == 192 && green == 192 && blue == 192){
+                    Tile tile = new Tile(tileLoc); //Create tile object
+                    GameData.getInstance().addGameObject(tile); //Add tile to game object array
+                    tile.setSprite(2, 8); //green platform right
+                    tile.setTrim(1); //over size the tile to hide the gap
+                    tile.setSolid(true);
+                }
+                
+                //platform platform purple top-left lvl-4
+                //light gray-blue color pixal
+                else if(red == 184 && green == 0 && blue == 191){
+                    Tile tile = new Tile(tileLoc); //Create tile object
+                    GameData.getInstance().addGameObject(tile); //Add tile to game object array
+                    tile.setSprite(1, 11); //green platform right
+                    tile.setTrim(1); //over size the tile to hide the gap
+                    tile.setSolid(true);
+                }
+                
+                //platform platform purple top-right lvl-4
+                //light gray-blue color pixal
+                else if(red == 184 && green == 5 && blue == 191){
+                    Tile tile = new Tile(tileLoc); //Create tile object
+                    GameData.getInstance().addGameObject(tile); //Add tile to game object array
+                    tile.setSprite(1, 10); //green platform right
+                    tile.setTrim(1); //over size the tile to hide the gap
+                    tile.setSolid(true);
+                }
+                
+                //large enemy lvl-4
+                //light green color pixal
+                else if(red == 0 && green == 255 && blue == 100){
+                    VenusLargeEnemy largeEnemy = new VenusLargeEnemy(tileLoc, ID.LargeEnemyCollision); // create object
+                    GameData.getInstance().addGameObject(largeEnemy); // add enemy 
+                }
+                
                 //gold coin
                 //yellow color pixal
-                if(red == 255 && green == 242 && blue == 0){
+                else if(red == 255 && green == 242 && blue == 0){
                     Tile tile = new Gold(tileLoc); //Create tile object
                     GameData.getInstance().addGameObject(tile); //Add tile to game object array
 
@@ -716,7 +773,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
 		// Small enemy type
                 // Pinkish color pixal
-                if(red == 249 && green == 45 && blue == 227)
+                else if(red == 249 && green == 45 && blue == 227)
                 {
                     EarthSmallEnemy smallEnemy = new EarthSmallEnemy(tileLoc, ID.SmallEnemy); //Create tile object
                     GameData.getInstance().addGameObject(smallEnemy); //Add tile to game object array
@@ -724,7 +781,7 @@ public class GameController implements ActionListener, KeyListener, ComponentLis
                 
                 // Small enemy type
                 // Pinkish color pixal
-                if(red == 255 && green == 0 && blue == 0){
+                else if(red == 255 && green == 0 && blue == 0){
                     EarthBoss boss = new EarthBoss(tileLoc); //create object
                     GameData.getInstance().addGameObject(boss); //Add object
                 }

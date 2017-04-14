@@ -44,9 +44,10 @@ public class Main
         ImageLibrary.getInstance().loadSpriteSheet("primary1_left", "/Images/primary1_left.png", 51, 26, 0, 0);
         ImageLibrary.getInstance().loadSpriteSheet("primary1_right", "/Images/primary1_right.png", 51, 26, 0, 0);        
         ImageLibrary.getInstance().loadSpriteSheet("grenade", "/Images/grenade.png", 144, 82, 0, 0);
-
-        
-        
+        ImageLibrary.getInstance().loadSpriteSheet("blueEnemyWalkingRight2", "/Images/blueEnemyWalkingRight2.png", 248, 180, 0, 0);
+        ImageLibrary.getInstance().loadSpriteSheet("blueEnemyWalkingLeft2", "/Images/blueEnemyWalkingLeft2.png", 248, 180, 0, 0);        
+        ImageLibrary.getInstance().loadSpriteSheet("blueEnemyAttackLeft", "/Images/blueEnemyWalkingRight2.png", 248, 180, 0, 0);
+        ImageLibrary.getInstance().loadSpriteSheet("blueEnemyAttackRight", "/Images/blueEnemyWalkingLeft2.png", 248,  180, 0, 0); 
         
         //build and display the gui
         MainWindow.getInstance().setVisible(true);
